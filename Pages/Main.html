@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 
 <head>
+	<title>Ground Control Station</title>
 	<style>
 		#Background{
 			background:#000;
@@ -52,6 +53,19 @@
 		<div id = "Panel_Edge"></div>
 	</div>
 	<script>
+		Audio = new Audio('Motivation.mp3');
+		Audio.addEventListener('ended',function(){
+			this.currentTime = 0;
+			this.play();
+		},
+		false);
+		Audio.play();
+
 		const socket = new WebSocket('ws://localhost:6800');
+		socket.onopen = function () { ws.send("F"); };
+		socket.onmessage = function (event) {
+			document.body.append(document.createTextNode(event.data));
+		}
+		socket.onerror - function (event){ document.body.append("[error]"); }
 	</script>
 </body>
