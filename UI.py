@@ -23,6 +23,8 @@ class Main:
 		def test(): return open("./Pages/Main.html",'r').read()
 		@app.route("/Motivation.mp3")
 		def Motivation(): return open("./Pages/Motivation.mp3",'rb').read()
+		@app.route("/Motivation.png")
+		def Motiv2(): return open("./Pages/Motivation.gif",'rb').read()
 		app.run()
 
 	def Reflect(self):
